@@ -182,7 +182,7 @@ function Index() {
             <div className="mt-12 grid gap-7 md:grid-cols-3">
               {t.dishes.map((d, i) => (
                 <article key={d.name} className="reveal overflow-hidden rounded-2xl border border-border bg-card shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-warm)]">
-                  <img src={dishImgs[i].src} alt={dishImgs[i].alt} loading="lazy" className={`aspect-[4/3] w-full object-cover ${dishImgs[i].pos}`} />
+                  <img src={dishImgs[i]!.src} alt={dishImgs[i]!.alt} loading="lazy" className={`aspect-[4/3] w-full object-cover ${dishImgs[i]!.pos}`} />
                   <div className="p-6">
                     <h3 className="font-display text-2xl text-primary">{d.name}</h3>
                     <p className="mt-2 leading-relaxed text-muted-foreground">{d.desc}</p>
@@ -205,7 +205,7 @@ function Index() {
             <h2 className="reveal text-center font-display text-4xl sm:text-5xl">{t.whyTitle}</h2>
             <div className="mt-12 grid gap-8 sm:grid-cols-3">
               {t.why.map((w, i) => {
-                const Icon = whyIcons[i];
+                const Icon = whyIcons[i] ?? Flame;
                 return (
                   <div key={w.t} className="reveal text-center">
                     <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ember text-charcoal">
@@ -307,7 +307,7 @@ function Index() {
           <button aria-label={t.close} className="absolute end-4 top-4 rounded-full bg-cream p-2 text-charcoal" onClick={() => setLightbox(null)}>
             <X className="h-5 w-5" />
           </button>
-          <img src={gallery[lightbox].src} alt={gallery[lightbox].alt} className="max-h-[90vh] max-w-full rounded-lg object-contain" />
+          <img src={gallery[lightbox]!.src} alt={gallery[lightbox]!.alt} className="max-h-[90vh] max-w-full rounded-lg object-contain" />
         </div>
       )}
     </div>
