@@ -93,6 +93,21 @@ function Index() {
     document.documentElement.dir = langMeta[lang].dir;
   }, [lang]);
 
+  useEffect(() => {
+    if (!window.location.hash) return;
+    history.replaceState(null, "", window.location.pathname);
+    const toTop = () => window.scrollTo({ top: 0, behavior: "instant" });
+    toTop();
+    const t1 = setTimeout(toTop, 100);
+    const t2 = setTimeout(toTop, 500);
+    window.addEventListener("load", toTop);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("load", toTop);
+    };
+  }, []);
+
   const gallery = [
     { src: new1.url, alt: t.alt.lamb, cls: "row-span-2" },
     { src: mercedes.url, alt: t.alt.mercedes, cls: "row-span-2" },
