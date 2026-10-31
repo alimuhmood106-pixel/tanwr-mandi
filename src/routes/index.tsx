@@ -93,6 +93,13 @@ function Index() {
     document.documentElement.dir = langMeta[lang].dir;
   }, [lang]);
 
+  useEffect(() => {
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname);
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   const gallery = [
     { src: new1.url, alt: t.alt.lamb, cls: "row-span-2" },
     { src: mercedes.url, alt: t.alt.mercedes, cls: "row-span-2" },
