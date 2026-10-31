@@ -7,7 +7,12 @@ import storefront from "@/assets/storefront.jpg.asset.json";
 import interior from "@/assets/interior.jpg.asset.json";
 import maqluba from "@/assets/maqluba.jpg.asset.json";
 import mercedes from "@/assets/mercedes.jpg.asset.json";
-import banner from "@/assets/banner.jpg.asset.json";
+import new1 from "@/assets/new1.jpg.asset.json";
+import new2 from "@/assets/new2.jpg.asset.json";
+import new3 from "@/assets/new3.jpg.asset.json";
+import new5 from "@/assets/new5.jpg.asset.json";
+import new6 from "@/assets/new6.jpg.asset.json";
+import new7 from "@/assets/new7.jpg.asset.json";
 import {
   translations, langMeta, type Lang, PHONE_TEL, PHONE_DISPLAY, FACEBOOK_URL, INSTAGRAM_URL, MAP_LAT, MAP_LNG,
 } from "@/lib/i18n";
@@ -48,16 +53,16 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function useReveal() {
+function useReveal(dep: string) {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
+    const els = document.querySelectorAll(".reveal:not(.is-visible)");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("is-visible"), io.unobserve(e.target))),
       { threshold: 0.15 },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [dep]);
 }
 
 function LangSwitch({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
@@ -81,7 +86,7 @@ function Index() {
   const [lang, setLang] = useState<Lang>("ckb");
   const [lightbox, setLightbox] = useState<number | null>(null);
   const t = translations[lang];
-  useReveal();
+  useReveal(lang);
 
   useEffect(() => {
     document.documentElement.lang = langMeta[lang].htmlLang;
@@ -89,16 +94,19 @@ function Index() {
   }, [lang]);
 
   const gallery = [
+    { src: new1.url, alt: t.alt.lamb, cls: "row-span-2" },
     { src: mercedes.url, alt: t.alt.mercedes, cls: "row-span-2" },
-    { src: storefront.url, alt: t.alt.storefront, cls: "row-span-2" },
+    { src: new2.url, alt: t.alt.interior, cls: "col-span-2 row-span-2" },
     { src: maqluba.url, alt: t.alt.maqluba, cls: "row-span-2" },
-    { src: interior.url, alt: t.alt.interior, cls: "row-span-2" },
-    { src: banner.url, alt: t.alt.lamb, cls: "col-span-2" },
+    { src: new3.url, alt: t.alt.storefront, cls: "row-span-2" },
+    { src: new5.url, alt: t.alt.hero, cls: "row-span-2" },
+    { src: new6.url, alt: t.alt.hero, cls: "row-span-2" },
+    { src: new7.url, alt: t.alt.hero, cls: "row-span-2" },
     { src: hero.url, alt: t.alt.hero, cls: "row-span-2" },
   ];
   const dishImgs = [
     { src: mercedes.url, alt: t.alt.mercedes, pos: "object-center" },
-    { src: banner.url, alt: t.alt.lamb, pos: "object-[85%_center]" },
+    { src: new1.url, alt: t.alt.lamb, pos: "object-bottom" },
     { src: maqluba.url, alt: t.alt.maqluba, pos: "object-bottom" },
   ];
   const whyIcons = [Flame, Home, Wheat];
@@ -181,7 +189,7 @@ function Index() {
             <h2 className="reveal text-center font-display text-4xl sm:text-5xl">{t.dishesTitle}</h2>
             <div className="mt-12 grid gap-7 md:grid-cols-3">
               {t.dishes.map((d, i) => (
-                <article key={d.name} className="reveal overflow-hidden rounded-2xl border border-border bg-card shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-warm)]">
+                <article key={i} className="reveal overflow-hidden rounded-2xl border border-border bg-card shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-warm)]">
                   <img src={dishImgs[i]!.src} alt={dishImgs[i]!.alt} loading="lazy" className={`aspect-[4/3] w-full object-cover ${dishImgs[i]!.pos}`} />
                   <div className="p-6">
                     <h3 className="font-display text-2xl text-primary">{d.name}</h3>
@@ -207,7 +215,7 @@ function Index() {
               {t.why.map((w, i) => {
                 const Icon = whyIcons[i] ?? Flame;
                 return (
-                  <div key={w.t} className="reveal text-center">
+                  <div key={i} className="reveal text-center">
                     <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ember text-charcoal">
                       <Icon className="h-8 w-8" />
                     </div>
