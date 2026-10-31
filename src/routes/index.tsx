@@ -1,18 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Phone, MapPin, Navigation, Flame, Home, Wheat, Utensils, Car, Clock, X, Facebook, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
-import hero from "@/assets/hero.jpg";
-import storefront from "@/assets/storefront.jpg";
-import interior from "@/assets/interior.jpg";
-import maqluba from "@/assets/maqluba.jpg";
-import mercedes from "@/assets/mercedes.jpg";
-import new1 from "@/assets/new1.jpg";
-import new2 from "@/assets/new2.jpg";
-import new3 from "@/assets/new3.jpg";
-import new5 from "@/assets/new5.jpg";
-import new6 from "@/assets/new6.jpg";
-import new7 from "@/assets/new7.jpg";
+import logo from "@/assets/logo.png.asset.json";
+import hero from "@/assets/hero.jpg.asset.json";
+import storefront from "@/assets/storefront.jpg.asset.json";
+import interior from "@/assets/interior.jpg.asset.json";
+import maqluba from "@/assets/maqluba.jpg.asset.json";
+import mercedes from "@/assets/mercedes.jpg.asset.json";
+import new1 from "@/assets/new1.jpg.asset.json";
+import new2 from "@/assets/new2.jpg.asset.json";
+import new3 from "@/assets/new3.jpg.asset.json";
+import new5 from "@/assets/new5.jpg.asset.json";
+import new6 from "@/assets/new6.jpg.asset.json";
+import new7 from "@/assets/new7.jpg.asset.json";
 import {
   translations, langMeta, type Lang, PHONE_TEL, PHONE_DISPLAY, FACEBOOK_URL, INSTAGRAM_URL, MAP_LAT, MAP_LNG,
 } from "@/lib/i18n";
@@ -109,20 +109,20 @@ function Index() {
   }, []);
 
   const gallery = [
-    { src: new1, alt: t.alt.lamb, cls: "row-span-2" },
-    { src: mercedes, alt: t.alt.mercedes, cls: "row-span-2" },
-    { src: new2, alt: t.alt.interior, cls: "col-span-2 row-span-2" },
-    { src: maqluba, alt: t.alt.maqluba, cls: "row-span-2" },
-    { src: new3, alt: t.alt.storefront, cls: "row-span-2" },
-    { src: new5, alt: t.alt.hero, cls: "row-span-2" },
-    { src: new6, alt: t.alt.hero, cls: "row-span-2" },
-    { src: new7, alt: t.alt.hero, cls: "row-span-2" },
-    { src: hero, alt: t.alt.hero, cls: "row-span-2" },
+    { src: new1.url, alt: t.alt.lamb, cls: "row-span-2" },
+    { src: mercedes.url, alt: t.alt.mercedes, cls: "row-span-2" },
+    { src: new2.url, alt: t.alt.interior, cls: "col-span-2 row-span-2" },
+    { src: maqluba.url, alt: t.alt.maqluba, cls: "row-span-2" },
+    { src: new3.url, alt: t.alt.storefront, cls: "row-span-2" },
+    { src: new5.url, alt: t.alt.hero, cls: "row-span-2" },
+    { src: new6.url, alt: t.alt.hero, cls: "row-span-2" },
+    { src: new7.url, alt: t.alt.hero, cls: "row-span-2" },
+    { src: hero.url, alt: t.alt.hero, cls: "row-span-2" },
   ];
   const dishImgs = [
-    { src: mercedes, alt: t.alt.mercedes, pos: "object-center" },
-    { src: new1, alt: t.alt.lamb, pos: "object-bottom" },
-    { src: maqluba, alt: t.alt.maqluba, pos: "object-bottom" },
+    { src: mercedes.url, alt: t.alt.mercedes, pos: "object-center" },
+    { src: new1.url, alt: t.alt.lamb, pos: "object-bottom" },
+    { src: maqluba.url, alt: t.alt.maqluba, pos: "object-bottom" },
   ];
   const whyIcons = [Flame, Home, Wheat];
   const embers = Array.from({ length: 14 });
@@ -133,7 +133,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2">
           <a href="#top" className="flex min-w-0 items-center gap-2">
-            <img src={logo} alt={t.alt.logo} className="h-11 w-11 shrink-0" />
+            <img src={logo.url} alt={t.alt.logo} className="h-11 w-11 shrink-0" />
             <span className="hidden truncate font-display text-xl sm:inline">{t.brand}</span>
           </a>
           <nav className="hidden gap-5 text-sm md:flex">
@@ -153,7 +153,7 @@ function Index() {
       <main id="top">
         {/* Hero */}
         <section className="relative h-[92svh] min-h-[560px] overflow-hidden bg-charcoal">
-          <img src={hero} alt={t.alt.hero} className="animate-slow-zoom absolute inset-0 h-full w-full object-cover object-[center_60%]" fetchPriority="high" />
+          <img src={hero.url} alt={t.alt.hero} className="animate-slow-zoom absolute inset-0 h-full w-full object-cover object-[center_60%]" fetchPriority="high" />
           <div className="absolute inset-0" style={{ background: "var(--gradient-sunset)" }} />
           <div aria-hidden className="pointer-events-none absolute inset-0">
             {embers.map((_, i) => (
@@ -183,10 +183,10 @@ function Index() {
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2">
             <div className="reveal relative mx-auto h-[420px] w-full max-w-md sm:h-[500px]">
               <figure className="torn grain absolute start-0 top-0 w-[68%] rotate-[-3deg] bg-cream p-3 shadow-xl">
-                <img src={storefront} alt={t.alt.storefront} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                <img src={storefront.url} alt={t.alt.storefront} loading="lazy" className="aspect-[3/4] w-full object-cover" />
               </figure>
               <figure className="torn grain absolute bottom-0 end-0 w-[62%] rotate-[4deg] bg-cream p-3 shadow-xl">
-                <img src={interior} alt={t.alt.interior} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                <img src={interior.url} alt={t.alt.interior} loading="lazy" className="aspect-[3/4] w-full object-cover" />
               </figure>
             </div>
             <div className="reveal">
@@ -305,7 +305,7 @@ function Index() {
       <div className="keffiyeh" />
       <footer className="bg-charcoal py-12 pb-28 text-cream md:pb-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-5 text-center">
-          <img src={logo} alt={t.alt.logo} loading="lazy" className="h-20 w-20" />
+          <img src={logo.url} alt={t.alt.logo} loading="lazy" className="h-20 w-20" />
           <a href={PHONE_TEL} dir="ltr" className="text-lg font-semibold text-gold">{PHONE_DISPLAY}</a>
           <p className="max-w-md opacity-80">{t.address}</p>
           <p className="opacity-80">{t.hours}</p>
