@@ -94,10 +94,18 @@ function Index() {
   }, [lang]);
 
   useEffect(() => {
-    if (window.location.hash) {
-      history.replaceState(null, "", window.location.pathname);
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
+    if (!window.location.hash) return;
+    history.replaceState(null, "", window.location.pathname);
+    const toTop = () => window.scrollTo({ top: 0, behavior: "instant" });
+    toTop();
+    const t1 = setTimeout(toTop, 100);
+    const t2 = setTimeout(toTop, 500);
+    window.addEventListener("load", toTop);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("load", toTop);
+    };
   }, []);
 
   const gallery = [
