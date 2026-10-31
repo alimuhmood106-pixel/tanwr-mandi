@@ -96,7 +96,7 @@ function Index() {
   useEffect(() => {
     if (window.location.hash) {
       history.replaceState(null, "", window.location.pathname);
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, []);
 
