@@ -6,6 +6,8 @@ export const FACEBOOK_URL = "https://facebook.com/Tanur.Mandi";
 export const INSTAGRAM_URL = "https://instagram.com/tanur_mandi";
 export const MAP_LAT = 35.563772;
 export const MAP_LNG = 45.403283;
+export const DIRECTIONS_URL =
+  "https://www.google.com/maps/place/Tanwr+Mandi+-+%D8%AA%D9%86%D9%88%D8%B1+%D9%85%D9%86%D8%AF%D9%8A+-+%D8%AA%DB%95%D9%86%D9%88%D8%B1+%D9%85%DB%95%D9%86%D8%AF%DB%8C%E2%80%AD/@35.563761,45.4027093,90m/data=!3m1!1e3!4m17!1m10!4m9!1m4!2m2!1d45.400064!2d35.5631104!4e1!1m3!2m2!1d45.403283!2d35.563772!3m5!1s0x40002f9f5ac054bb:0x648bcc77373dbe4b!8m2!3d35.5635429!4d45.4032158!16s%2Fg%2F11np7s4m2j?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D";
 
 export const langMeta: Record<Lang, { label: string; dir: "rtl" | "ltr"; htmlLang: string }> = {
   ckb: { label: "کوردی", dir: "rtl", htmlLang: "ckb" },

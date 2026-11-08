@@ -14,7 +14,7 @@ import new5 from "@/assets/new5.jpg.asset.json";
 import new6 from "@/assets/new6.jpg.asset.json";
 import new7 from "@/assets/new7.jpg.asset.json";
 import {
-  translations, langMeta, type Lang, PHONE_TEL, PHONE_DISPLAY, FACEBOOK_URL, INSTAGRAM_URL, MAP_LAT, MAP_LNG,
+  translations, langMeta, type Lang, PHONE_TEL, PHONE_DISPLAY, FACEBOOK_URL, INSTAGRAM_URL, MAP_LAT, MAP_LNG, DIRECTIONS_URL,
 } from "@/lib/i18n";
 
 const TITLE = "Tanwr Mandi (تەنور مەندی) | Authentic Mandi in Sulaymaniyah";
@@ -283,7 +283,7 @@ function Index() {
                 <a href={PHONE_TEL} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-xl font-bold text-primary-foreground shadow-[var(--shadow-warm)]">
                   <Phone className="h-6 w-6" /> <span dir="ltr">{PHONE_DISPLAY}</span>
                 </a>
-                <a href={`https://www.google.com/maps/dir/?api=1&destination=${MAP_LAT},${MAP_LNG}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-charcoal px-6 py-4 text-lg font-semibold text-cream">
+                <a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-charcoal px-6 py-4 text-lg font-semibold text-cream">
                   <Navigation className="h-5 w-5" /> {t.directions}
                 </a>
               </div>
